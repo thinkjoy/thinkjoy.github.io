@@ -1,0 +1,23 @@
+markdown: kramdown
+permalink: /:categories/:title.html
+url: 
+lsi: false
+safe: true
+
+paginate: 10
+paginate_path: "page:num"
+
+# presonal config
+title: Thinkjoy Tech Blog
+description: Thinkjoy Tech Blog, powered by Jekyll...
+feed: 
+
+author: Thinkjoy
+
+seo: 
+  keyword: 
+  description: 
+config:
+  js_dir:
+  img_dir:
+  css_dir:
