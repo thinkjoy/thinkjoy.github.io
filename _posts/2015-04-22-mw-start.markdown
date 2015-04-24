@@ -1,0 +1,56 @@
+---
+layout: post
+title:  "习悦中间件介绍"
+date:   2015-04-22 09:21:00
+categories: mw
+---
+
+###背景
+助力产品开发，提升公司核心竞争力。
+{% highlight ruby %}
+gradle -ai --refresh=dependencies
+{% endhighlight %}
+
+<img src="/image/20150422/codegen.png" height="800" width="600" />
+
+
+如果使用IDEA这个IDE，可以执行以下命令
+{% highlight ruby %}
+gradle -ai --refresh=dependencies ideaModule
+{% endhighlight %}
+                      
+
+
+###详细介绍
+例如 servlet-api.jar此类，web容器会提供，但在项目编译时也需要，可以通过如下配置解决：
+
+* 和 war plugin配套使用
+{% highlight ruby %}
+apply plugin: 'war'
+
+dependencies {
+  providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+}
+{% endhighlight %}
+
+* 仅有jar plugin的情况
+{% highlight ruby %}
+configurations { providedCompile }
+
+dependencies {
+    providedCompile "javax.servlet:javax.servlet-api:3.+"
+}
+
+sourceSets.main.compileClasspath += configurations.providedCompile
+sourceSets.test.compileClasspath += configurations.providedCompile
+sourceSets.test.runtimeClasspath += configurations.providedCompile
+{% endhighlight %}
+
+
+另外：需要注意 providedCompile会将此jar依赖的包也不会打进部署包，如果需要 需要加上@jar。例如
+{% highlight groovy %}
+providedCompile  'javax.servlet:javax.servlet-api:3.1.0@jar'
+{% endhighlight %}
+
+
+...待续
