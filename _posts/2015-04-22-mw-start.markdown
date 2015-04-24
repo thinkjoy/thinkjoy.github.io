@@ -13,6 +13,8 @@ categories: mw
 ###详细介绍
 代码生成工具
 
+<img src="/image/20150422/codegen.png" height="800" width="600" />
+
 服务管理平台
 
 数据分析平台
